@@ -4,7 +4,8 @@
   "description": "Renders an image on the fly to be embeded into websites",
   "main": "index.js",
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "start": "node index.js"
   },
   "author": "Lázaro Menezes",
   "license": "ISC",

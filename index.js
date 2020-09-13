@@ -1,7 +1,14 @@
 const express = require('express')
-const app = express()
 const port = process.env.PORT || 8888
 const prefix = '/image'
+const plugins = require('./plugins.json')
+
+var app = express()
+
+plugins.plugins.forEach(pluginName => {
+  let plugin = require(`./plugins/${pluginName}`)
+  app.get(`${prefix}/${plugin.route}`, plugin.onGet)
+})
 
 app.get(prefix, (req, res) => {
   res.send('Hello')
