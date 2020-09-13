@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
-const port = 8888
+const port = process.env.PORT || 8888
+const prefix = '/image'
 
-app.get('/image/', (req, res) => {
+app.get(prefix, (req, res) => {
   res.send('Hello')
 })
 
