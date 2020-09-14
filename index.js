@@ -7,7 +7,7 @@ var app = express()
 
 plugins.plugins.forEach(pluginName => {
   let plugin = require(`./plugins/${pluginName}`)
-  app.get(`${prefix}/${plugin.route}`, plugin.onGet)
+  app.get(`${prefix}/${plugin.route}`, plugin.onGet.bind(plugin))
 })
 
 app.get(prefix, (req, res) => {

@@ -1,19 +1,21 @@
-const textToSVG = require('text-to-svg').loadSync();
+
+const SVGImage = require('../svgImage')
 
 class TextPlugin{
-
   constructor(){
     this.route = 'text'
   }
 
   onGet(req, res) {
-  	const attributes = {fill: 'red', stroke: 'black'};
-		const options = {x: 0, y: 0, fontSize: 72, anchor: 'top', attributes: attributes};
- 
-		const svg = textToSVG.getSVG(req.query.text, options);
+    let options = {
+      fontSize: req.query.fontSize || 42,
+      leftMargin: req.query.left || 15,
+      topMargin: req.query.top || 15
+    }
 
-		res.send(svg)
+    res.send(new SVGImage(options).render(req.query.text))
   }
+
 }
 
 module.exports = new TextPlugin()
