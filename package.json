@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "author": "Lázaro Menezes",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "fortune-cookies": "^1.0.1",
