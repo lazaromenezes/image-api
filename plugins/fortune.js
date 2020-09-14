@@ -17,6 +17,7 @@ class FortunePlugin{
 
     fortuneCookies.fetchCookie()
       .then((cookie) => {
+        res.setHeader('content-type', 'image/svg+xml')
         res.send(new SVGImage(options).render(cookie))
       })
   }

@@ -12,6 +12,7 @@ class TextPlugin{
       topMargin: req.query.top || 15
     }
 
+    res.setHeader('content-type', 'image/svg+xml')
     res.send(new SVGImage(options).render(req.query.text))
   }
 
