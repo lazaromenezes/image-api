@@ -36,7 +36,7 @@ SVGImage.prototype.render = function(text){
 
   this.options.y = height * 0.5 - metrics.height * 0.5
 
-  let image = `<svg width="${width}" height="${height}">`
+  let image = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`
 
   image += `<rect width="${width}" height="${height}" fill="${this.options.background}"></rect>`
 
