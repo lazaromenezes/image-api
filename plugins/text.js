@@ -1,4 +1,3 @@
-
 const SVGImage = require('../svgImage')
 
 class TextPlugin{
