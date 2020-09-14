@@ -13,6 +13,7 @@ class TextPlugin{
     }
 
     res.setHeader('content-type', 'image/svg+xml')
+    res.setHeader('content-type', 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate')
     res.send(new SVGImage(options).render(req.query.text))
   }
 
