@@ -15,4 +15,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "br-com-lazarodm-image-api" 
           heroku_email: "lazarodm@gmail.com"
-          procfile: "web: npm start"
