@@ -15,8 +15,8 @@ class SVGImage{
 SVGImage.prototype.render = function(text){
 
   const attributes = {
-    fill: 'red', 
-    stroke: 'black', 
+    stroke: '#EEEEEE', 
+    fill: '#EEEEEE', 
   }
 
   this.options = Object.assign(this.options, {
@@ -33,8 +33,15 @@ SVGImage.prototype.render = function(text){
   let height = metrics.height + this.options.topMargin * 2
 
   let image = `<svg width="${width}" height="${height}">`
+  image += `
+    <defs>
+      <linearGradient id="sky" x1="0%" y1="0%" x2="0" y2="100%">
+        <stop offset="0%" style="stop-color:#6078EA;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#17EAD9;stop-opacity:1" />
+      </linearGradient>
+    </defs>`
 
-  image += `<rect width="${width}" height="${height}" fill="blue"></rect>`
+  image += `<rect width="${width}" height="${height}" fill="url(#sky)"></rect>`
 
   image += textToSVG.getPath(text, this.options)
 
