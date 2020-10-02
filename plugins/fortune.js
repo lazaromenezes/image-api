@@ -1,7 +1,9 @@
 const SVGImage = require('../svgImage')
+const SVGResponse = require('./svgResponse')
 const fortuneCookies = require('fortune-cookies')
 
 class FortunePlugin{
+
   constructor(){
     this.route = 'fortune'
   }
@@ -15,14 +17,11 @@ class FortunePlugin{
       textColor: "#444444"
     }
 
-    fortuneCookies.fetchCookie()
-      .then((cookie) => {
-        res.setHeader('content-type', 'image/svg+xml')
-        res.setHeader('cache-control', 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate')
-        res.send(new SVGImage(options).render(cookie))
-      })
+    fortuneCookies.fetchCookie().then((cookie) => {
+      let image = new SVGImage(options).render(cookie)
+      SVGResponse.send(res, image)
+    })
   }
-
 }
 
 module.exports = new FortunePlugin()
