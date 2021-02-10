@@ -8,5 +8,5 @@ Please, contribute! You can do that by sending pull requests for code improvemen
 
 ## Credits
 
-Fortunes by [Fortune Cookie API](http://fortunecookieapi.herokuapp.com/)
+Fortunes by [Fortune API](https://github.com/lazaromenezes/fortune-api)
 
