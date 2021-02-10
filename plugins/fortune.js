@@ -1,6 +1,6 @@
 const SVGImage = require('../svgImage')
 const SVGResponse = require('./svgResponse')
-const fortuneCookies = require('fortune-cookies')
+const fetch = require('node-fetch')
 
 class FortunePlugin{
 
@@ -17,8 +17,10 @@ class FortunePlugin{
       textColor: "#444444"
     }
 
-    fortuneCookies.fetchCookie().then((cookie) => {
-      let image = new SVGImage(options).render(cookie)
+    fetch('http://fortune-api.lazarodm.com.br/fortune')
+    .then(res => res.text())
+    .then(body => {
+      let image = new PNGImage(options).render(body)
       SVGResponse.send(res, image)
     })
   }

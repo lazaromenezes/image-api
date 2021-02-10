@@ -11,8 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "fortune-cookies": "^1.0.1",
-    "got": "^11.6.2",
     "text-to-svg": "^3.1.5"
+    "node-fetch": "^2.6.1"
   }
 }
