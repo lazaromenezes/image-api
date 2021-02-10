@@ -1,5 +1,5 @@
-const SVGImage = require('../svgImage')
-const SVGResponse = require('./svgResponse')
+const PNGImage = require('../pngImage')
+const PNGResponse = require('./pngResponse')
 
 class TextPlugin{
 
@@ -8,14 +8,15 @@ class TextPlugin{
   }
 
   onGet(req, res) {
+    let fontSize = req.query.fontSize || 42
     let options = {
-      fontSize: req.query.fontSize || 42,
-      leftMargin: req.query.left || 15,
-      topMargin: req.query.top || 15
+      font: `${fontSize}px sans-serif`,
+      paddingLeft: req.query.left || 15,
+      paddingTop: req.query.top || 15
     }
 
-    let image = new SVGImage(options).render(req.query.text)
-    SVGResponse.send(res, image)
+    let image = new PNGImage(options).render(req.query.text)
+    PNGResponse.send(res, image)
   }
 }
 

@@ -1,5 +1,5 @@
-const SVGImage = require('../svgImage')
-const SVGResponse = require('./svgResponse')
+const PNGImage = require('../pngImage')
+const PNGResponse = require('./pngResponse')
 const fetch = require('node-fetch')
 
 class FortunePlugin{
@@ -9,11 +9,12 @@ class FortunePlugin{
   }
 
   onGet(req, res) {
+    let fontSize = req.query.fontSize || 30
     let options = {
-      fontSize: req.query.fontSize || 30,
-      leftMargin: req.query.left || 15,
-      topMargin: req.query.top || 15,
-      background: "white",
+      font: `${fontSize}px sans-serif`,
+      paddingLeft: req.query.left || 10,
+      paddingTop: req.query.top || 10,
+      backgroundColor: "white",
       textColor: "#444444"
     }
 
@@ -21,7 +22,7 @@ class FortunePlugin{
     .then(res => res.text())
     .then(body => {
       let image = new PNGImage(options).render(body)
-      SVGResponse.send(res, image)
+      PNGResponse.send(res, image)
     })
   }
 }
