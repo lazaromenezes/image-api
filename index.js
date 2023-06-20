@@ -1,5 +1,5 @@
 const express = require('express')
-const port = process.env.PORT || 8888
+const port = process.env.PORT || 80
 const prefix = '/image'
 const plugins = require('./plugins.json')
 
