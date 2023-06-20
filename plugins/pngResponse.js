@@ -1,4 +1,4 @@
-class PNGResponse {
+export default class PNGResponse {
   send(res, pngImage){
     res.setHeader('content-type', 'image/png')
     res.setHeader('cache-control', 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate')
@@ -6,4 +6,3 @@ class PNGResponse {
   }
 }
 
-module.exports = new PNGResponse()

@@ -1,8 +1,6 @@
-const PNGImage = require('../pngImage')
-const PNGResponse = require('./pngResponse')
-let fetch
-
-import('node-fetch').then( (imported) => fetch = imported)
+import PNGImage from '../pngImage.js'
+import PNGResponse from './pngResponse.js'
+import fetch from 'node-fetch'
 
 class FortunePlugin{
 
@@ -24,9 +22,9 @@ class FortunePlugin{
     .then(res => res.text())
     .then(body => {
       let image = new PNGImage(options).render(body)
-      PNGResponse.send(res, image)
+      new PNGResponse().send(res, image)
     })
   }
 }
 
-module.exports = new FortunePlugin()
+export default new FortunePlugin()

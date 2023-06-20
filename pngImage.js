@@ -1,6 +1,6 @@
-const text2png = require('text2png')
+import text2png from 'text2png'
 
-class PNGImage{
+export default class PNGImage{
   
   constructor(options){
     this.options = {
@@ -22,4 +22,3 @@ PNGImage.prototype.render = function(text){
   return text2png(text, this.options)
 }
 
-module.exports = PNGImage

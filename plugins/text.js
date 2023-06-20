@@ -1,5 +1,5 @@
-const PNGImage = require('../pngImage')
-const PNGResponse = require('./pngResponse')
+import PNGImage from '../pngImage.js'
+import PNGResponse from './pngResponse.js'
 
 class TextPlugin{
 
@@ -7,7 +7,7 @@ class TextPlugin{
     this.route = 'text'
   }
 
-  onGet(req, res) {
+  onGet(req, res){
     let fontSize = req.query.fontSize || 42
     let options = {
       font: `${fontSize}px sans-serif`,
@@ -16,8 +16,8 @@ class TextPlugin{
     }
 
     let image = new PNGImage(options).render(req.query.text)
-    PNGResponse.send(res, image)
+    new PNGResponse().send(res, image)
   }
 }
 
-module.exports = new TextPlugin()
+export default new TextPlugin()

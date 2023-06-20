@@ -1,13 +1,15 @@
-const express = require('express')
+import express from 'express'
+import plugins from './plugins.json' assert { type: "json" }
+
 const port = process.env.PORT || 80
 const prefix = '/image'
-const plugins = require('./plugins.json')
 
 var app = express()
 
 plugins.plugins.forEach(pluginName => {
-  let plugin = require(`./plugins/${pluginName}`)
-  app.get(`${prefix}/${plugin.route}`, plugin.onGet.bind(plugin))
+  import(`./plugins/${pluginName}.js`).then((plugin) => {
+    app.get(`${prefix}/${plugin.default.route}`, plugin.default.onGet)
+  })
 })
 
 app.get(prefix, (req, res) => {
