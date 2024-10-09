@@ -2,8 +2,9 @@ import PNGImage from '../pngImage.js'
 import PNGResponse from './pngResponse.js'
 import fetch from 'node-fetch'
 
+const fortuneApi = process.env.FORTUNE_API_URL
+
 class FortunePlugin{
-  const fortuneApi = process.env.FORTUNE_API_URL
   
   constructor(){
     this.route = 'fortune'
