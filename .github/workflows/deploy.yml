@@ -59,7 +59,7 @@ jobs:
                },
                {
                    "name": "FORTUNE_API_URL",
-                   "value": "${{ env.FORTUNE_API_URL }}",
+                   "value": "${{ vars.FORTUNE_API_URL }}",
                    "slotSetting": false
                }
            ]
