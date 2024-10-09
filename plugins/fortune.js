@@ -3,7 +3,8 @@ import PNGResponse from './pngResponse.js'
 import fetch from 'node-fetch'
 
 class FortunePlugin{
-
+  const fortuneApi = process.env.FORTUNE_API_URL
+  
   constructor(){
     this.route = 'fortune'
   }
@@ -18,7 +19,7 @@ class FortunePlugin{
       textColor: "#444444"
     }
 
-    fetch('http://fortune-api.lazarodm.com.br/fortune')
+    fetch(`${fortuneApi}/fortune`)
     .then(res => res.text())
     .then(body => {
       let image = new PNGImage(options).render(body)
